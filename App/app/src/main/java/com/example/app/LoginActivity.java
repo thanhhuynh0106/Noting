@@ -30,6 +30,9 @@ import com.example.app.remote.RetrofitClient;
 import com.example.app.remote.SharedPrefManager;
 import com.example.app.model.ResponseDTO;
 
+import java.util.Collections;
+import java.util.Map;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -40,6 +43,7 @@ public class LoginActivity extends AppCompatActivity {
     Button btnLogin;
     ImageView imgViewCaptcha;
     EditText edtCaptchaInput;
+    String captchaImageBase64;
 
 
     @Override
@@ -74,9 +78,11 @@ public class LoginActivity extends AppCompatActivity {
         imgViewCaptcha = findViewById(R.id.imageViewCaptcha);
         edtCaptchaInput = findViewById(R.id.etCaptchaInput);
 
+
         loadCaptcha();
         btnLogin.setOnClickListener(v -> performLogin());
         imgViewCaptcha.setOnClickListener(v -> loadCaptcha());
+
     }
 
     private void loadCaptcha() {
@@ -87,6 +93,8 @@ public class LoginActivity extends AppCompatActivity {
                     String base64Image = response.body().getImage();
                     Log.d("CAPTCHA_BASE64", base64Image);
 
+                    captchaImageBase64 = base64Image;
+
                     if (base64Image.startsWith("data:image")) {
                         base64Image = base64Image.substring(base64Image.indexOf(",") + 1);
                     }
@@ -95,6 +103,9 @@ public class LoginActivity extends AppCompatActivity {
                         byte[] imageBytes = Base64.decode(base64Image, Base64.DEFAULT);
                         Bitmap decodedBitmap = BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.length);
                         imgViewCaptcha.setImageBitmap(decodedBitmap);
+
+                        solveNFillCaptcha();
+
                     } catch (Exception e) {
                         Log.e("CAPTCHA", "Fail decoding captcha: " + e.getMessage());
                         Toast.makeText(LoginActivity.this, "Cannot display captcha", Toast.LENGTH_SHORT).show();
@@ -109,7 +120,6 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
     }
-
 
 
     public void onCreateAccountClicked() {
@@ -170,6 +180,38 @@ public class LoginActivity extends AppCompatActivity {
             public void onFailure(Call<ResponseDTO> call, Throwable t) {
                 Log.e("Login", "Error: " + t.getMessage());
                 Toast.makeText(LoginActivity.this, "Cannot connect to server!", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    private void solveNFillCaptcha() {
+        if (captchaImageBase64 == null || captchaImageBase64.isEmpty()) {
+            Log.e("SOLVE_CAPTCHA", "No captcha image to solve.");
+            return;
+        }
+
+        Map<String, String> requestBody = Collections.singletonMap("image", captchaImageBase64);
+
+        RetrofitClient.getCaptchaAPI(this).solveCaptcha(requestBody).enqueue(new Callback<Map<String, String>>() {
+            @Override
+            public void onResponse(Call<Map<String, String>> call, Response<Map<String, String>> response) {
+                if (response.isSuccessful() && response.body() != null) {
+                    String solvedCaptcha = response.body().get("result");
+                    if (solvedCaptcha != null) {
+                        edtCaptchaInput.setText(solvedCaptcha);
+                        Log.d("SOLVE_CAPTCHA", "Captcha solved and filled: " + solvedCaptcha);
+                    } else {
+                        Log.e("SOLVE_CAPTCHA", "Result field is null in response.");
+                    }
+                } else {
+                    Log.e("SOLVE_CAPTCHA", "Error response from solver: " + response.code() + " " + response.message());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Map<String, String>> call, Throwable t) {
+                Toast.makeText(LoginActivity.this, "Solver connection error!", Toast.LENGTH_SHORT).show();
+                Log.e("SOLVE_CAPTCHA", "Solver API call failed: " + t.getMessage());
             }
         });
     }

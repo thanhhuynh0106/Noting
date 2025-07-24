@@ -7,6 +7,16 @@ public class CaptchaResponse {
         return image;
     }
 
+    public String solvedText;
+
+    public String getSolvedText() {
+        return solvedText;
+    }
+
+    public void setSolvedText(String solvedText) {
+        this.solvedText = solvedText;
+    }
+
     public void setImage(String image) {
         this.image = image;
     }
