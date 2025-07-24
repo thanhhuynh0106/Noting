@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_color"
+    tools:context=".SignupActivity">
+
+    <ImageView
+        android:id="@+id/overlayImage"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:scaleType="centerCrop"
+        android:alpha="0.6"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.65" />
+
+    <LinearLayout
+        android:id="@+id/signupForm"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintWidth_percent="0.9"
+        android:background="@android:color/transparent">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Will you be mine?"
+            android:textSize="24sp"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:textColor="#EB8E2446"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Create an account to keep memories unforgettable ≽^•༚• ྀི≼"
+            android:textSize="16sp"
+            android:gravity="center"
+            android:textColor="#974747"
+            android:layout_marginBottom="45dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="1"
+            android:layout_marginBottom="24dp">
+
+            <EditText
+                android:layout_width="0dp"
+                android:id="@+id/edtFullName"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:autofillHints=""
+                android:gravity="center_horizontal"
+                android:hint="Your name"
+                android:textStyle="bold"
+                android:background="@drawable/round_corner_edittext"
+                android:textColorHint="#C85579"
+                android:textColor="#633FAF"
+                android:padding="12dp"
+                android:inputType="text"
+                />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2"
+            android:layout_marginBottom="24dp">
+
+            <EditText
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textStyle="bold"
+                android:id="@+id/edtNumber"
+                android:hint="Your number"
+                android:background="@drawable/round_corner_edittext"
+                android:textColorHint="#C85579"
+                android:gravity="center_horizontal"
+                android:textColor="#633FAF"
+                android:inputType="phone"
+                android:padding="12dp" />
+
+            <EditText
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="Your DoB"
+                android:id="@+id/edtDob"
+                android:gravity="center_horizontal"
+                android:inputType="date"
+                android:textStyle="bold"
+                android:background="@drawable/round_corner_edittext"
+                android:textColorHint="#C85579"
+                android:textColor="#633FAF"
+                android:padding="12dp"
+                android:layout_marginStart="24dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:weightSum="3"
+            android:layout_marginBottom="24dp">
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:autofillHints=""
+                android:id="@+id/edtEmail"
+                android:gravity="center_horizontal"
+                android:hint="Your email"
+                android:textStyle="bold"
+                android:background="@drawable/round_corner_edittext"
+                android:textColorHint="#C85579"
+                android:textColor="#633FAF"
+                android:padding="12dp"
+                android:inputType="textEmailAddress"
+                />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:autofillHints=""
+                android:id="@+id/edtUsername"
+                android:gravity="center_horizontal"
+                android:hint="Your username"
+                android:textStyle="bold"
+                android:background="@drawable/round_corner_edittext"
+                android:textColorHint="#C85579"
+                android:textColor="#633FAF"
+                android:layout_marginTop="24dp"
+                android:padding="12dp"
+                android:inputType="text"
+                />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="Your password"
+                android:gravity="center_horizontal"
+                android:inputType="textPassword"
+                android:textStyle="bold"
+                android:id="@+id/edtPassword"
+                android:background="@drawable/round_corner_edittext"
+                android:textColorHint="#C85579"
+                android:textColor="#633FAF"
+                android:layout_marginTop="24dp"
+                android:padding="12dp"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/captchaLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginTop="0dp">
+
+            <EditText
+                android:id="@+id/edtCaptchaInput"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="Enter captcha"
+                android:layout_marginEnd="15dp"
+                android:inputType="text"
+                android:textStyle="bold"
+                android:textColor="#633FAF"
+                android:textColorHint="#C85579"
+                android:background="@drawable/round_corner_edittext"
+                android:padding="12dp"
+                />
+
+            <ImageView
+                android:id="@+id/imageViewCaptcha"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:layout_weight="1"
+                android:scaleType="fitCenter"
+                android:background="@android:color/transparent"
+                android:layout_marginEnd="8dp"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_marginTop="24dp">
+
+            <Button
+                android:id="@+id/btnSignup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Sign Up"
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                android:backgroundTint="#8692f7"
+                android:padding="12dp"/>
+
+            <TextView
+                android:id="@+id/tvLoginHere"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Already have an account? Login here."
+                android:textColor="#8692f7"
+                android:layout_marginTop="16dp"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
