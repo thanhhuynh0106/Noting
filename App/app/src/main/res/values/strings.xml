@@ -3,4 +3,7 @@
     <string name="button">Button</string>
     <string name="title_activity_login">LoginActivity</string>
     <string name="dive_into_memories"><![CDATA[Dive into memories ₍^ >ヮ<^₎]]></string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="hiiii"><![CDATA[Hi hiiiiiii ฅ^>⩊<^ ฅ\nLet\'s start your day with a smile!]]></string>
 </resources>
