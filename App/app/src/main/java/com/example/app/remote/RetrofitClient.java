@@ -4,6 +4,7 @@ import android.content.Context;
 
 import com.example.app.api.AuthAPI;
 import com.example.app.api.CaptchaAPI;
+import com.example.app.api.WeatherAPI;
 
 import java.net.CookieHandler;
 import java.net.CookieManager;
@@ -45,6 +46,10 @@ public class RetrofitClient {
 
     public static AuthAPI getAuthAPI(Context context) {
         return getClient(context).create(AuthAPI.class);
+    }
+
+    public static WeatherAPI getWeatherAPI(Context context) {
+        return getClient(context).create(WeatherAPI.class);
     }
 
 }

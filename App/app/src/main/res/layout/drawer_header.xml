@@ -12,7 +12,7 @@
         android:layout_width="60dp"
         android:layout_height="60dp"
         app:shapeAppearanceOverlay="@style/CircleImageStyle"
-        android:src="@drawable/ag"
+        android:src="@drawable/cat_finger"
         android:layout_marginLeft="20dp"
         android:scaleType="centerCrop" />
 

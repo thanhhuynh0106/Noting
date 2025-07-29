@@ -16,122 +16,121 @@
         android:layout_height="match_parent"
         app:menu="@menu/drawer_menu"
         android:layout_gravity="start"
-        app:headerLayout="@layout/drawer_header"/>
+        app:headerLayout="@layout/drawer_header"
+        />
 
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fitsSystemWindows="true">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:fitsSystemWindows="true"
-        >
+            <!-- Header Layout -->
+            <LinearLayout
+                android:id="@+id/header_layout"
+                android:layout_width="0dp"
+                android:layout_height="86dp"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
-        <!-- Header Layout -->
-        <LinearLayout
-            android:id="@+id/header_layout"
-            android:layout_width="0dp"
-            android:layout_height="86dp"
-            android:background="@color/white"
-            android:orientation="horizontal"
-            android:gravity="center_vertical"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent">
+                <ImageButton
+                    android:id="@+id/menu_btn_sidebar"
+                    android:layout_width="28dp"
+                    android:layout_height="48dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:contentDescription="Menu"
+                    android:src="@drawable/menu_ic" />
 
-            <ImageButton
-                android:layout_width="28dp"
-                android:layout_height="48dp"
-                android:contentDescription="Menu"
-                android:layout_gravity="center_vertical"
-                android:layout_weight="1"
-                android:id="@+id/menu_btn_sidebar"
-                android:background="?attr/selectableItemBackgroundBorderless"
-                android:src="@drawable/menu_ic" />
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_weight="1" />
+
+                <ImageButton
+                    android:layout_width="28dp"
+                    android:layout_height="48dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:contentDescription="Dark Mode"
+                    android:src="@drawable/night_mode_ic" />
+            </LinearLayout>
 
             <View
+                android:id="@+id/divider_line"
+                android:layout_width="match_parent"
+                android:layout_height="2.5dp"
+                android:background="#CCCCCC"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/header_layout">
+
+            </View>
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/profile_image"
                 android:layout_width="0dp"
-                android:layout_height="1dp"
-                android:layout_weight="1" />
+                android:layout_height="0dp"
+                android:elevation="4dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/cat_finger"
+                app:layout_constraintBottom_toBottomOf="@id/divider_line"
+                app:layout_constraintDimensionRatio="1:1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/divider_line"
+                app:layout_constraintWidth_percent="0.17"
+                app:shapeAppearanceOverlay="@style/CircleImageStyle"
+                app:strokeColor="#CCCCCC"
+                app:strokeWidth="1.5dp">
 
-            <ImageButton
-                android:layout_width="28dp"
-                android:layout_height="48dp"
-                android:contentDescription="Dark Mode"
-                android:layout_gravity="center_vertical"
-                android:layout_weight="1"
-                android:background="?attr/selectableItemBackgroundBorderless"
-                android:src="@drawable/night_mode_ic" />
-        </LinearLayout>
-        
-        <View
-            android:id="@+id/divider_line"
-            android:layout_width="match_parent"
-            android:layout_height="2.5dp"
-            android:background="#CCCCCC"
-            app:layout_constraintTop_toBottomOf="@+id/header_layout"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent">
-            
-        </View>
-        
-        <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/profile_image"
-            app:shapeAppearanceOverlay="@style/CircleImageStyle"
-            android:scaleType="centerCrop"
-            app:layout_constraintTop_toTopOf="@id/divider_line"
-            app:layout_constraintBottom_toBottomOf="@id/divider_line"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintWidth_percent="0.17"
-            app:layout_constraintDimensionRatio="1:1"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            app:strokeWidth="1.5dp"
-            app:strokeColor="#CCCCCC"
-            android:elevation="4dp"
-            android:src="@drawable/ag"
-            >
-        </com.google.android.material.imageview.ShapeableImageView>
+            </com.google.android.material.imageview.ShapeableImageView>
 
 
-        <!-- Fragment Container -->
-        <androidx.fragment.app.FragmentContainerView
-            android:id="@+id/fragment_container"
-            android:name="androidx.navigation.fragment.NavHostFragment"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            app:defaultNavHost="true"
-            app:navGraph="@navigation/nav_graph"
-            app:layout_constraintTop_toBottomOf="@+id/profile_image"
-            app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent">
+            <!-- Fragment Container -->
+            <androidx.fragment.app.FragmentContainerView
+                android:id="@+id/fragment_container"
+                android:name="androidx.navigation.fragment.NavHostFragment"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:defaultNavHost="true"
+                app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/profile_image"
+                app:navGraph="@navigation/nav_graph">
 
-        </androidx.fragment.app.FragmentContainerView>
+            </androidx.fragment.app.FragmentContainerView>
 
-        <!-- Bottom Navigation -->
-        <com.google.android.material.bottomnavigation.BottomNavigationView
-            android:id="@+id/bottom_navigation"
-            android:layout_width="0dp"
-            android:background="#FFFFFF"
-            android:layout_height="wrap_content"
-            app:menu="@menu/bottom_nav_menu"
-            app:labelVisibilityMode="unlabeled"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" >
+            <!-- Bottom Navigation -->
+            <com.google.android.material.bottomnavigation.BottomNavigationView
+                android:id="@+id/bottom_navigation"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="#FFFFFF"
+                app:labelVisibilityMode="unlabeled"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:menu="@menu/bottom_nav_menu">
 
-        </com.google.android.material.bottomnavigation.BottomNavigationView>
+            </com.google.android.material.bottomnavigation.BottomNavigationView>
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="2.5dp"
-            app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            android:background="#CCCCCC"
-            >
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2.5dp"
+                android:background="#CCCCCC"
+                app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent">
 
-        </View>
+            </View>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
 </androidx.drawerlayout.widget.DrawerLayout>
