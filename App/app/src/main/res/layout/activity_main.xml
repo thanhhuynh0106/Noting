@@ -10,10 +10,20 @@
     android:fitsSystemWindows="true"
     tools:openDrawer="start">
 
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/nav_view"
+        android:layout_width="280dp"
+        android:layout_height="match_parent"
+        app:menu="@menu/drawer_menu"
+        android:layout_gravity="start"
+        app:headerLayout="@layout/drawer_header"/>
+
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/background_color_lighter">
+        android:fitsSystemWindows="true"
+        >
 
         <!-- Header Layout -->
         <LinearLayout
@@ -32,8 +42,8 @@
                 android:layout_height="48dp"
                 android:contentDescription="Menu"
                 android:layout_gravity="center_vertical"
-                android:layout_marginTop="10dp"
                 android:layout_weight="1"
+                android:id="@+id/menu_btn_sidebar"
                 android:background="?attr/selectableItemBackgroundBorderless"
                 android:src="@drawable/menu_ic" />
 
@@ -47,7 +57,6 @@
                 android:layout_height="48dp"
                 android:contentDescription="Dark Mode"
                 android:layout_gravity="center_vertical"
-                android:layout_marginTop="10dp"
                 android:layout_weight="1"
                 android:background="?attr/selectableItemBackgroundBorderless"
                 android:src="@drawable/night_mode_ic" />

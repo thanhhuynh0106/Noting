@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/navigation_tasks"
+        android:id="@+id/home_fragment"
+        android:icon="@drawable/home_ic"
+        android:title="Home"/>
+    <item
+        android:id="@+id/task_fragment"
         android:icon="@drawable/task_ic"
         android:title="Task"/>
     <item
-        android:id="@+id/navigation_calendar"
+        android:id="@+id/calendar_fragment"
         android:icon="@drawable/calendar_ic"
         android:title="Calendar"/>
-    <item
-        android:id="@+id/navigation_clock"
-        android:icon="@drawable/clock_ic"
-        android:title="Clock"/>
     <item
         android:id="@+id/navigation_settings"
         android:icon="@drawable/setting_ic"
